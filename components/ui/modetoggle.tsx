@@ -1,39 +1,38 @@
 "use client"
 
 import * as React from "react"
-import { Moon, Sun } from "lucide-react"
-
+import { MoveUp, MoveDown } from "lucide-react"
+import { Square } from 'lucide-react';
 
 import { useTheme } from "next-themes"
-
+import { useState } from "react";
 import { Button } from "@/components/ui/button"
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
 export function ModeToggle() {
-  const { setTheme } = useTheme()
 
-  return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button variant="outline" size="icon">
-          <Sun className="h-[1.2rem] w-[1.2rem] scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90" />
-          <Moon className="absolute h-[1.2rem] w-[1.2rem] scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0" />
-          <span className="sr-only">Toggle theme</span>
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
-        <DropdownMenuItem onClick={() => setTheme("light")}>
-          Light
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("dark")}>
-          Dark
-        </DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
-  )
+    const { setTheme } = useTheme()
+    const [Toggle, setToggle] = useState(false)
+    function helper() {
+        setToggle(!Toggle)
+        Toggle ? setTheme('light') : setTheme('dark')
+    }
+    return (
+        // <div >
+            <div className= {`${Toggle ?'bg-turboblue ':'bg-primary'} flex justify-center items-center px-2 `}>
+                <span className="text-white text-2xl font-bold mb-1">[</span>
+                <button
+                    onClick={helper}
+                    className="bg-green-400 w-4 h-3 mx-1 hover:bg-green-500"
+                ></button>
+                <span className="text-white text-2xl font-bold mb-1">]</span>
+            </div>
+        // </div>
+    )
 }
+
