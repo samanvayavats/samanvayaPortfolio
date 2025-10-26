@@ -1,18 +1,9 @@
 "use client"
 
 import * as React from "react"
-import { MoveUp, MoveDown } from "lucide-react"
-import { Square } from 'lucide-react';
 
 import { useTheme } from "next-themes"
 import { useState } from "react";
-import { Button } from "@/components/ui/button"
-import {
-    DropdownMenu,
-    DropdownMenuContent,
-    DropdownMenuItem,
-    DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
 
 export function ModeToggle() {
 
@@ -24,7 +15,7 @@ export function ModeToggle() {
     }
     return (
         // <div >
-            <div className= {`${Toggle ?'bg-turboblue ':'bg-primary'} flex justify-center items-center px-2 `}>
+            <div className= {`${Toggle ?'bg-turboblue ':'bg-primary'} flex justify-center items-center px-2 absolute bottom-5 left-10 `}>
                 <span className="text-white text-2xl font-bold mb-1">[</span>
                 <button
                     onClick={helper}

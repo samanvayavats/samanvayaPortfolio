@@ -7,6 +7,21 @@
 @theme {
   --color-turboblue: #0000AA;
   --color-primary: #1E1E1E;
+  --color-turbo-black: #000000;
+  --color-turbo-green: #00AA00;
+  --color-turbo-cyan: #00AAAA;
+  --color-turbo-red: #AA0000;
+  --color-turbo-magenta: #AA00AA;
+  --color-turbo-brown: #AA5500;
+  --color-turbo-light-gray: #AAAAAA;
+  --color-turbo-dark-gray: #555555;
+  --color-turbo-light-blue: #5555FF;
+  --color-turbo-light-green: #55FF55;
+  --color-turbo-light-cyan: #55FFFF;
+  --color-turbo-light-red: #FF5555;
+  --color-turbo-light-magenta: #FF55FF;
+  --color-turbo-yellow: #FFFF55;
+  --color-turbo-white: #FFFFFF;
 }
 
 @theme inline {
@@ -47,7 +62,13 @@
   --color-sidebar-ring: var(--sidebar-ring);
 }
 
+
+body {
+  font-family: var(--font-turbo);
+}
+
 :root {
+   --font-turbo: 'VT323', monospace;
   --radius: 0.625rem;
   --background: #1E1E1E;
   --foreground: #ffffff;
