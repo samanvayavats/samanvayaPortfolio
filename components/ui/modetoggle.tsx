@@ -1,29 +1,60 @@
-"use client"
+"use client";
 
-import * as React from "react"
+import { useEffect, useState } from "react";
+import { useTheme } from "next-themes";
 
-import { useTheme } from "next-themes"
-import { useState } from "react";
+export default function ModeToggle() {
+  const { resolvedTheme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
 
-export function ModeToggle() {
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
-    const { setTheme } = useTheme()
-    const [Toggle, setToggle] = useState(false)
-    function helper() {
-        setToggle(!Toggle)
-        Toggle ? setTheme('light') : setTheme('dark')
-    }
-    return (
-        // <div >
-            <div className= {`${Toggle ?'bg-turboblue ':'bg-primary'} flex justify-center items-center px-2 absolute bottom-5 left-10 `}>
-                <span className="text-white text-2xl font-bold mb-1">[</span>
-                <button
-                    onClick={helper}
-                    className="bg-green-400 w-4 h-3 mx-1 hover:bg-green-500"
-                ></button>
-                <span className="text-white text-2xl font-bold mb-1">]</span>
-            </div>
-        // </div>
-    )
+  if (!mounted) return null;
+
+  const isDark = resolvedTheme === "dark";
+
+  return (
+    <div className="flex items-center gap-1">
+      <span
+        className={`text-2xl font-bold ${
+          isDark ? "text-turbo-red" : "text-black"
+        }`}
+      >
+        [
+      </span>
+
+      <button
+        onClick={() => setTheme(isDark ? "light" : "dark")}
+        aria-label="Toggle Theme"
+        className={`
+          relative
+          w-4
+          h-4
+          rounded-[3px]
+          transition-all
+          duration-300
+          hover:scale-110
+          active:scale-90
+          ${
+            isDark
+            ? "bg-[#00c853]"
+              : "bg-green-500"
+              
+          }
+        `}
+      >
+        <span className="absolute inset-x-0 top-0 h-1/3 rounded-t-[3px] bg-white/40" />
+      </button>
+
+      <span
+        className={`text-2xl font-bold ${
+          isDark ? "text-turbo-red" : "text-black"
+        }`}
+      >
+        ]
+      </span>
+    </div>
+  );
 }
-

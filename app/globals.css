@@ -146,3 +146,20 @@ body {
   }
 }
 
+@keyframes terminalGlow {
+
+    0%,
+    100% {
+        opacity: 1;
+        filter: drop-shadow(0 0 2px #39ff14);
+    }
+
+    50% {
+        opacity: .45;
+        filter: drop-shadow(0 0 10px #39ff14);
+    }
+}
+
+.cursor-terminal {
+    animation: terminalGlow 1s infinite;
+}
